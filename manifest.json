@@ -1,0 +1,10 @@
+{
+  "name": "Fxx",
+  "short_name": "Fxx",
+  "description": "Fxx",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#424242",
+  "background_color": "#424242"
+
+}
