@@ -206,9 +206,9 @@ span.img-text {
     background: rgb(0 0 0 / 25%);
     backdrop-filter: blur(10px);
     /*margin: 0.5rem;*/
-    padding: 1rem;
+    /* padding: 1rem; */
     border-radius: 6px;
-    margin-top: 3.5rem;
+    margin-top: 1rem;
     max-width: 460px;
     cursor: pointer;
 }
