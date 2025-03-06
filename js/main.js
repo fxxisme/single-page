@@ -307,16 +307,15 @@ for (let day of days) {
 //更多页面切换
 let shoemore = false;
 $('#switchmore').on('click', function () {
-    console.log('点击了');
     shoemore = !shoemore;
     if (shoemore && $(document).width() >= 990) {
         $('#container').attr('class', 'container mores');
-        $('#change').html('Oops&nbsp;!');
-        $('#change1').html('哎呀，这都被你发现了（ 再点击一次可关闭 ）');
+        // $('#change').html('Oops&nbsp;!');
+        // $('#change1').html('哎呀，这都被你发现了（ 再点击一次可关闭 ）');
     } else {
         $('#container').attr('class', 'container');
-        $('#change').html('Hello&nbsp;World&nbsp;!');
-        $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
+        // $('#change').html('Hello&nbsp;World&nbsp;!');
+        // $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
     }
 });
 
