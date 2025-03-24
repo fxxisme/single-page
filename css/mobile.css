@@ -241,9 +241,9 @@
     }
 
     /*隐藏鼠标样式*/
-    #cursor {
+    /* #cursor {
         background: transparent !important;
-    }
+    } */
 
 }
 
@@ -340,10 +340,6 @@
     font-size: 1.75rem;
 }
 
-/*第二屏logo*/
-.logo-text {
-    font-family: 'Pacifico-Regular' !important;
-}
 
 /*切换动画*/
 /*

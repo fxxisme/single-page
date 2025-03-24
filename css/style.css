@@ -76,7 +76,7 @@ a:hover {
 }
 
 /*鼠标样式*/
-#g-pointer-1 {
+/* #g-pointer-1 {
     display: none;
 }
 
@@ -91,7 +91,7 @@ a:hover {
     background: #ffffff40;
     border-radius: 50%;
     z-index: 9999999;
-}
+} */
 
 /*背景*/
 .bg-all {
@@ -174,6 +174,7 @@ main {
 .main-img {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .main-img img {
@@ -216,6 +217,7 @@ span.img-text {
 .des {
     display: flex;
     justify-content: space-between;
+    padding: 1rem;
 }
 
 .des-title {
@@ -336,16 +338,18 @@ i.iconfont.icon-z_shangpinheji {
 /*更多页面*/
 .more {
     display: none !important;
-    width: 46%;
+    /* width: 46%; */
     z-index: 999;
     position: fixed;
-    height: 82%;
+    /* height: 82%; */
     /* right: 4%; */
     background: rgb(0 0 0 / 25%);
     backdrop-filter: blur(10px);
-    top: 7%;
-    border-radius: 6px;
-    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
 .mores .more {
@@ -394,6 +398,8 @@ i.iconfont.icon-z_shangpinheji {
     color: rgb(86 77 89) !important;
     font-size: 0.95rem;
     height: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .date {
@@ -623,4 +629,33 @@ i.iconfont.icon-times {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #eeeeee;
+}
+
+/* star */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 120vh;
+    z-index: 1;
+}
+
+.background #startrack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    object-fit: cover;
+}
+
+.background .cover {
+    position: absolute;
+    bottom: 00%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, rgba(32, 32, 32, 1) 30%, rgba(32, 32, 32, 0) 100%);
 }

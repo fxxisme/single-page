@@ -24,21 +24,21 @@ iziToast.settings({
 });
 
 /* 鼠标样式 */
-const body = document.querySelector('body');
-const element = document.getElementById('g-pointer-1');
-const element2 = document.getElementById('g-pointer-2');
-const halfAlementWidth = element.offsetWidth / 2;
-const halfAlementWidth2 = element2.offsetWidth / 2;
+// const body = document.querySelector('body');
+// const element = document.getElementById('g-pointer-1');
+// const element2 = document.getElementById('g-pointer-2');
+// const halfAlementWidth = element.offsetWidth / 2;
+// const halfAlementWidth2 = element2.offsetWidth / 2;
 
-function setPosition(x, y) {
-    element2.style.transform = `translate(${x - halfAlementWidth2 + 1}px, ${y - halfAlementWidth2 + 1}px)`;
-}
+// function setPosition(x, y) {
+//     element2.style.transform = `translate(${x - halfAlementWidth2 + 1}px, ${y - halfAlementWidth2 + 1}px)`;
+// }
 
-body.addEventListener('mousemove', (e) => {
-    window.requestAnimationFrame(function () {
-        setPosition(e.clientX, e.clientY);
-    });
-});
+// body.addEventListener('mousemove', (e) => {
+//     window.requestAnimationFrame(function () {
+//         setPosition(e.clientX, e.clientY);
+//     });
+// });
 
 //加载完成后执行
 window.addEventListener(
@@ -60,19 +60,6 @@ window.addEventListener(
             });
         }, 800);
 
-        //中文字体缓加载-此处写入字体源文件 （暂时弃用）
-        //先行加载简体中文子集，后续补全字集
-        //由于压缩过后的中文字体仍旧过大，可转移至对象存储或 CDN 加载
-        // const font = new FontFace(
-        //     "MiSans",
-        //     "url(" + "./font/MiSans-Regular.woff2" + ")"
-        // );
-        // document.fonts.add(font);
-
-        //移动端去除鼠标样式
-        if (Boolean(window.navigator.userAgent.match(/AppWebKit.*Mobile.*/))) {
-            $('#g-pointer-2').css('display', 'none');
-        }
     },
     false
 );
@@ -81,17 +68,7 @@ setTimeout(function () {
     $('#loading-text').html('字体及文件加载可能需要一定时间');
 }, 3000);
 
-// 新春灯笼 （ 需要时可取消注释 ）
-// new_element=document.createElement("link");
-// new_element.setAttribute("rel","stylesheet");
-// new_element.setAttribute("type","text/css");
-// new_element.setAttribute("href","./css/lantern.css");
-// document.body.appendChild(new_element);
 
-// new_element=document.createElement("script");
-// new_element.setAttribute("type","text/javascript");
-// new_element.setAttribute("src","./js/lantern.js");
-// document.body.appendChild(new_element);
 
 //获取一言
 fetch('https://v1.hitokoto.cn?max_length=24')
@@ -216,64 +193,6 @@ function time() {
     t = setTimeout(time, 1000);
 }
 
-//链接提示文字
-// $('#social')
-//     .mouseover(function () {
-//         $('#social').css({
-//             background: 'rgb(0 0 0 / 25%)',
-//             'border-radius': '6px',
-//             'backdrop-filter': 'blur(5px)',
-//         });
-//         $('#link-text').css({
-//             display: 'block',
-//         });
-//     })
-//     .mouseout(function () {
-//         $('#social').css({
-//             background: 'none',
-//             'border-radius': '6px',
-//             'backdrop-filter': 'none',
-//         });
-//         $('#link-text').css({
-//             display: 'none',
-//         });
-//     });
-
-$('#github')
-    .mouseover(function () {
-        $('#link-text').html('去 Github 看看');
-    })
-    .mouseout(function () {
-        $('#link-text').html('通过这里联系我');
-    });
-$('#qq')
-    .mouseover(function () {
-        $('#link-text').html('有什么事吗');
-    })
-    .mouseout(function () {
-        $('#link-text').html('通过这里联系我');
-    });
-$('#email')
-    .mouseover(function () {
-        $('#link-text').html('来封 Email');
-    })
-    .mouseout(function () {
-        $('#link-text').html('通过这里联系我');
-    });
-$('#bilibili')
-    .mouseover(function () {
-        $('#link-text').html('来 B 站看看 ~');
-    })
-    .mouseout(function () {
-        $('#link-text').html('通过这里联系我');
-    });
-$('#telegram')
-    .mouseover(function () {
-        $('#link-text').html('你懂的 ~');
-    })
-    .mouseout(function () {
-        $('#link-text').html('通过这里联系我');
-    });
 
 //自动变灰
 let myDate = new Date();
@@ -324,7 +243,6 @@ $('#close').on('click', function () {
     $('#switchmore').click();
 });
 
-
 //更多弹窗页面
 $('#openmore').on('click', function () {
     $('#box').css('display', 'block');
@@ -351,8 +269,8 @@ window.addEventListener('load', function () {
         if (window.innerWidth <= 990) {
             //移动端隐藏更多页面
             $('#container').attr('class', 'container');
-            $('#change').html('Hello&nbsp;World&nbsp;!');
-            $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
+            // $('#change').html('Hello&nbsp;World&nbsp;!');
+            // $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
 
             //移动端隐藏弹窗页面
             $('#box').css('display', 'none');
@@ -392,5 +310,3 @@ $('#more').hover(
 //     });
 //     return false;
 // };
-
-
