@@ -5,9 +5,8 @@
     "author": "fxx6",
     "logo_img": "https://easy.fxx6.top/i/2025/03/06/ntgwee.jpg",
     "bottom_info": [
-        {"title": "qq", "img_url": "https://q1.qlogo.cn/g?b=qq&nk=123456789&s=640"},
-        {"title": "github", "url": "https://q1.qlogo.cn/g?b=qq&nk=123456789&s=640"},
-        {"title": "telegram", "url": "https://q1.qlogo.cn/g?b=qq&nk=123456789&s=640"}
+        { "title": "qq", "img_url": "https://easy.fxx6.top/i/2025/03/27/sa9cqp.jpg" },
+        { "title": "github", "url": "https://github.com/fxxisme" },
+        { "title": "telegram", "url": "https://t.me/fxxisme" }
     ]
-
 }

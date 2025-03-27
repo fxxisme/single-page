@@ -23,23 +23,6 @@ iziToast.settings({
     iconColor: '#efefef',
 });
 
-/* 鼠标样式 */
-// const body = document.querySelector('body');
-// const element = document.getElementById('g-pointer-1');
-// const element2 = document.getElementById('g-pointer-2');
-// const halfAlementWidth = element.offsetWidth / 2;
-// const halfAlementWidth2 = element2.offsetWidth / 2;
-
-// function setPosition(x, y) {
-//     element2.style.transform = `translate(${x - halfAlementWidth2 + 1}px, ${y - halfAlementWidth2 + 1}px)`;
-// }
-
-// body.addEventListener('mousemove', (e) => {
-//     window.requestAnimationFrame(function () {
-//         setPosition(e.clientX, e.clientY);
-//     });
-// });
-
 //加载完成后执行
 window.addEventListener(
     'load',
@@ -59,7 +42,6 @@ window.addEventListener(
                 message: '欢迎来到我的主页',
             });
         }, 800);
-
     },
     false
 );
@@ -67,8 +49,6 @@ window.addEventListener(
 setTimeout(function () {
     $('#loading-text').html('字体及文件加载可能需要一定时间');
 }, 3000);
-
-
 
 //获取一言
 fetch('https://v1.hitokoto.cn?max_length=24')
@@ -193,7 +173,6 @@ function time() {
     t = setTimeout(time, 1000);
 }
 
-
 //自动变灰
 let myDate = new Date();
 let mon = myDate.getMonth() + 1;
@@ -223,36 +202,27 @@ for (let day of days) {
     }
 }
 
-//更多页面切换
-let shoemore = false;
-$('#switchmore').on('click', function () {
-    shoemore = !shoemore;
-    if (shoemore && $(document).width() >= 990) {
-        $('#container').attr('class', 'container mores');
-        // $('#change').html('Oops&nbsp;!');
-        // $('#change1').html('哎呀，这都被你发现了（ 再点击一次可关闭 ）');
-    } else {
-        $('#container').attr('class', 'container');
-        // $('#change').html('Hello&nbsp;World&nbsp;!');
-        // $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
+function openMore(content) {
+    if (content) {
+        $('#more .more-content').append(content);
     }
+    $('#container').attr('class', 'container mores');
+}
+
+function closeMore() {
+    $('#container').attr('class', 'container');
+    $('#more .more-content').empty();
+}
+
+//更多页面切换
+
+$('#switchmore').on('click', function () {
+    openMore();
 });
 
 //更多页面关闭按钮
 $('#close').on('click', function () {
-    $('#switchmore').click();
-});
-
-//更多弹窗页面
-$('#openmore').on('click', function () {
-    $('#box').css('display', 'block');
-    $('#row').css('display', 'none');
-    $('#more').css('cssText', 'display:none !important');
-});
-$('#closemore').on('click', function () {
-    $('#box').css('display', 'none');
-    $('#row').css('display', 'flex');
-    $('#more').css('display', 'flex');
+    closeMore();
 });
 
 //监听网页宽度
@@ -269,8 +239,6 @@ window.addEventListener('load', function () {
         if (window.innerWidth <= 990) {
             //移动端隐藏更多页面
             $('#container').attr('class', 'container');
-            // $('#change').html('Hello&nbsp;World&nbsp;!');
-            // $('#change1').html('一个建立于 21 世纪的小站，存活于互联网的边缘');
 
             //移动端隐藏弹窗页面
             $('#box').css('display', 'none');
@@ -300,13 +268,3 @@ $('#more').hover(
         $('#close').css('display', 'none');
     }
 );
-
-//屏蔽右键
-// document.oncontextmenu = function () {
-//     iziToast.show({
-//         timeout: 2000,
-//         icon: 'fa-solid fa-circle-exclamation',
-//         message: '为了浏览体验，本站禁用右键',
-//     });
-//     return false;
-// };
