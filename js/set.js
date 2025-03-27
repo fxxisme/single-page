@@ -37,7 +37,7 @@ function handleSocialLinks(data) {
             img.src = item.img_url;
             // 有图片URL的情况，添加点击事件
             socialLink = $(`<a href="javascript:void(0)" class="link" id="${item.title}" style="${index === 0 ? 'margin-left: 4px' : ''}">
-                <i class="fa-brands fa-${item.title}"></i>
+                <i class="${item.icon || 'fa-solid fa-link'}"></i>
             </a>`);
 
             // 添加点击事件，显示图片到more区域
@@ -47,7 +47,7 @@ function handleSocialLinks(data) {
         } else if (item.url) {
             // 有URL的情况，直接跳转链接
             socialLink = $(`<a href="${item.url}" class="link" id="${item.title}" target="_blank" style="${index === 0 ? 'margin-left: 4px' : ''}">
-                <i class="fa-brands fa-${item.title}"></i>
+                <i class="${item.icon || 'fa-solid fa-link'}"></i>
             </a>`);
         }
 
