@@ -1,6 +1,6 @@
 /**
  * Star Trails Animation
- * Creates a flowing star trails effect on a canvas element
+ * Creates a flowing star trails effect on a canvas element with responsive star density
  * @param {string} canvasId - The ID of the canvas element to use
  */
 function createStarTrails(canvasId) {
@@ -44,25 +44,55 @@ function createStarTrails(canvasId) {
         return {
             x: rand(-help.width, help.width),
             y: rand(-help.height, help.height),
-            size: 1.2,
+            size: rand(8, 12) / 10, // 稍微调整星星大小范围
             color: randomColor(),
         };
     }
 
+    // 根据屏幕宽度计算合适的星星数量
+    function calculateStarCount() {
+        // 基础数量
+        const baseCount = 18000;
+
+        // 根据屏幕宽度调整数量
+        if (window.innerWidth <= 480) {
+            // 手机屏幕 - 减少到基础的30%
+            return Math.floor(baseCount * 0.3);
+        } else if (window.innerWidth <= 768) {
+            // 平板屏幕 - 减少到基础的50%
+            return Math.floor(baseCount * 0.5);
+        } else if (window.innerWidth <= 1024) {
+            // 小型笔记本 - 减少到基础的70%
+            return Math.floor(baseCount * 0.7);
+        } else {
+            // 大屏幕 - 使用完整数量
+            return baseCount;
+        }
+    }
+
     // 创建星星
     function createStars() {
-        let count = 18000;
-        while (count--) {
+        // 清空当前星星
+        stars.length = 0;
+
+        // 计算合适的星星数量
+        const count = calculateStarCount();
+        console.log(`创建${count}颗星星`);
+
+        // 创建星星
+        for (let i = 0; i < count; i++) {
             stars.push(createStar());
         }
     }
 
     // 绘制星星
     function drawStar() {
-        console.log('绘制星星');
-        let count = stars.length;
-        while (count--) {
-            const star = stars[count];
+        // 清空辅助画布
+        helpContext.clearRect(0, 0, help.width, help.height);
+
+        // 逐个绘制星星
+        for (let i = 0; i < stars.length; i++) {
+            const star = stars[i];
             helpContext.beginPath();
             helpContext.arc(star.x, star.y, star.size, 0, Math.PI * 2, true);
             helpContext.fillStyle = star.color;
@@ -78,13 +108,18 @@ function createStarTrails(canvasId) {
 
         drawTimes++;
 
-        if (drawTimes > 200 && drawTimes % 8 === 0) {
-            showContext.fillStyle = 'rgba(0,0,0,.04)';
+        // 移动端减少渐变效果的频率和强度，提高清晰度
+        const fadeInterval = window.innerWidth <= 768 ? 12 : 8;
+        const fadeOpacity = window.innerWidth <= 768 ? 0.06 : 0.04;
+
+        if (drawTimes > 200 && drawTimes % fadeInterval === 0) {
+            showContext.fillStyle = `rgba(0,0,0,${fadeOpacity})`;
             showContext.fillRect(-(longSide * 3), -(longSide * 3), longSide * 6, longSide * 6);
         }
 
-        // 旋转
-        showContext.rotate((0.025 * Math.PI) / 180);
+        // 旋转 - 在移动端减慢旋转速度
+        const rotationSpeed = window.innerWidth <= 768 ? 0.018 : 0.025;
+        showContext.rotate((rotationSpeed * Math.PI) / 180);
     }
 
     // 动画函数
@@ -93,7 +128,44 @@ function createStarTrails(canvasId) {
         loop();
     }
 
-    // 初始化设置
+    // 完全重新初始化
+    function reinitialize() {
+        // 设置canvas尺寸
+        showWidth = show.offsetWidth;
+        showHeight = show.offsetHeight;
+
+        show.width = showWidth;
+        show.height = showHeight;
+
+        longSide = Math.max(showWidth, showHeight);
+
+        // 调整辅助canvas尺寸
+        help.width = longSide * 2.6;
+        help.height = longSide * 2.6;
+
+        // 设置背景
+        showContext.fillStyle = 'rgba(0,0,0,1)';
+        showContext.fillRect(0, 0, showWidth, showHeight);
+
+        // 重置变换
+        showContext.setTransform(1, 0, 0, 1, 0, 0);
+
+        // 调整圆心位置
+        if (showWidth < showHeight) {
+            showContext.translate(showWidth, showHeight);
+        } else {
+            showContext.translate(showWidth, 0);
+        }
+
+        // 重新生成和绘制星星
+        createStars();
+        drawStar();
+
+        // 重置计数器
+        drawTimes = 0;
+    }
+
+    // 初始化
     function init() {
         // 设置canvas尺寸
         showWidth = show.offsetWidth;
@@ -135,24 +207,16 @@ function createStarTrails(canvasId) {
     // 启动动画
     animate();
 
-    // 窗口大小变化处理
+    // 窗口大小变化处理 - 使用防抖动优化性能
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        // 更新canvas尺寸
-        showWidth = show.offsetWidth;
-        showHeight = show.offsetHeight;
-        show.width = showWidth;
-        show.height = showHeight;
+        // 清除之前的定时器
+        clearTimeout(resizeTimeout);
 
-        // 设置背景
-        showContext.fillStyle = 'rgba(0,0,0,1)';
-        showContext.fillRect(0, 0, showWidth, showHeight);
-
-        // // 关键！重置变换矩阵并重新设置translate
-        showContext.setTransform(1, 0, 0, 1, 0, 0);
-        if (showWidth < showHeight) {
-            showContext.translate(showWidth, showHeight);
-        } else {
-            showContext.translate(showWidth, 0);
-        }
+        // 设置新的定时器
+        resizeTimeout = setTimeout(() => {
+            // 完全重新初始化
+            reinitialize();
+        }, 250); // 250ms的防抖动延迟
     });
 }

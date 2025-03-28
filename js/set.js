@@ -77,38 +77,10 @@ function getCookies(key) {
 
 // 壁纸URL列表
 const wallpapers = [
-    'https://easy.fxx6.top/i/2024/06/11/s5gcsm.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5h5z9.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5hjnu.jpg',
     'https://easy.fxx6.top/i/2024/06/11/s5hi3e.jpg',
     'https://easy.fxx6.top/i/2024/06/11/s5idcg.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5ifox.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5iryb.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5j73b.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5jmv5.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5jrb7.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5k0qb.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5ke1u.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5ko1f.jpg',
     'https://easy.fxx6.top/i/2024/06/11/s5kwp7.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5l4os.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5lddt.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5lfnb.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5mcmt.jpg',
     'https://easy.fxx6.top/i/2024/06/11/s5n0wg.png',
-    'https://easy.fxx6.top/i/2024/06/11/s5n9ex.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5ndpm.jpg',
-    'https://easy.fxx6.top/i/2024/06/11/s5y56v.jpg',
-    './img/background1.webp',
-    './img/background2.webp',
-    './img/background3.webp',
-    './img/background4.webp',
-    './img/background5.webp',
-    './img/background6.webp',
-    './img/background7.webp',
-    './img/background8.webp',
-    './img/background9.webp',
-    './img/background10.webp',
 ];
 
 // 获取随机壁纸URL的函数

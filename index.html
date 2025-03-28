@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    
+
     <!--加载动画-->
     <div id="loading-box">
         <div class="loading-left-bg"></div>
@@ -57,7 +57,7 @@
     </div>
     <section id="section" class="section">
         <div class="background">
-            <canvas id="startrack" ></canvas>
+            <canvas id="startrack"></canvas>
             <div class="cover"></div>
         </div>
         <!-- 背景图片 -->
@@ -156,7 +156,44 @@
     <script type="text/javascript" src="./js/set.js"></script>
     <script type="text/javascript" src="./js/time.js"></script>
     <script type="text/javascript" src="./js/js.cookie.js"></script>
+    <script>
+        // 创建显示宽度和高度的元素
+        function createDimensionsDisplay() {
+            // 创建一个固定在屏幕上的元素来显示宽度和高度
+            const dimensionsDisplay = document.createElement('div');
+            dimensionsDisplay.id = 'dimensions-display';
+            dimensionsDisplay.style.cssText = `
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 9999;
+            pointer-events: none;
+            line-height: 1.5;
+          `;
+            document.body.appendChild(dimensionsDisplay);
 
+            // 更新尺寸显示
+            function updateDimensionsDisplay() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                dimensionsDisplay.innerHTML = `宽度: ${width}px<br>高度: ${height}px`;
+            }
+
+            // 初始更新
+            updateDimensionsDisplay();
+
+            // 窗口大小改变时更新
+            window.addEventListener('resize', updateDimensionsDisplay);
+        }
+
+        // 执行函数
+        createDimensionsDisplay();
+    </script>
 
 </body>
 

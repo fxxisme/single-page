@@ -41,8 +41,9 @@ window.addEventListener(
                 title: hello,
                 message: '欢迎来到我的主页',
             });
+            createStarTrails('startrack');
         }, 800);
-        createStarTrails('startrack');
+        
     },
     false
 );

@@ -1,7 +1,16 @@
 @charset "utf-8";
 
 /*小于1400px时*/
-@media (max-width: 1400px) {}
+@media (max-width: 1400px) {
+
+    /*总布局*/
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        width: 50vw !important;
+    }
+}
 
 /*小于1200px时*/
 @media (max-width: 1200px) {
@@ -249,6 +258,18 @@
 
 /*小于512px时*/
 @media (max-width: 512px) {
+    #date {
+        display: none;
+    }
+
+    /*总布局*/
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        max-width: 75vw !important;
+    }
+
     #made {
         display: none;
     }
@@ -257,7 +278,8 @@
 /*小于390px时*/
 @media (max-width: 390px) {
     .main-img img {
-        display: none;
+        /* display: none; */
+        width: 5rem;
     }
 
     #beian {
